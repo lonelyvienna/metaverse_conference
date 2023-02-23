@@ -10,7 +10,7 @@
       }
     ],
     "_variables": {
-      "walke": {
+      "walk": {
         "__id__": 17
       }
     }
@@ -169,7 +169,11 @@
   },
   {
     "__type__": "cc.animation.Transition",
-    "__editorExtras__": null,
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770799947970.4411427513462902",
+      "clone": null
+    },
     "from": {
       "__id__": 3
     },
@@ -180,7 +184,11 @@
   },
   {
     "__type__": "cc.animation.AnimationTransition",
-    "__editorExtras__": null,
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770799947970.64985768946407",
+      "clone": null
+    },
     "from": {
       "__id__": 8
     },
@@ -194,7 +202,7 @@
     ],
     "duration": 0.3,
     "relativeDuration": false,
-    "exitConditionEnabled": true,
+    "exitConditionEnabled": false,
     "destinationStart": 0,
     "relativeDestinationStart": false,
     "interruptionSource": 0,
@@ -209,12 +217,16 @@
   },
   {
     "__type__": "cc.animation.BindableBoolean",
-    "variable": "walke",
+    "variable": "walk",
     "value": false
   },
   {
     "__type__": "cc.animation.AnimationTransition",
-    "__editorExtras__": null,
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770799947970.9214608954919106",
+      "clone": null
+    },
     "from": {
       "__id__": 6
     },
@@ -228,7 +240,7 @@
     ],
     "duration": 0.3,
     "relativeDuration": false,
-    "exitConditionEnabled": true,
+    "exitConditionEnabled": false,
     "destinationStart": 0,
     "relativeDestinationStart": false,
     "interruptionSource": 0,
@@ -243,7 +255,7 @@
   },
   {
     "__type__": "cc.animation.BindableBoolean",
-    "variable": "walke",
+    "variable": "walk",
     "value": false
   },
   {
