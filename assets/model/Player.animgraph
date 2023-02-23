@@ -32,8 +32,8 @@
       "clone": null,
       "viewport": {
         "scale": 1.1600000000000001,
-        "top": -7.39666757554161,
-        "left": -80.95361854216799
+        "top": -9.39666757554161,
+        "left": -113.95361854216799
       }
     },
     "_states": [
@@ -133,7 +133,7 @@
       "clone": null
     },
     "clip": {
-      "__uuid__": "62199160-8d43-4449-8618-f15cf581de07@dc888",
+      "__uuid__": "d0256bc0-15c7-4510-834f-29c056fca68b@dc888",
       "__expectedType__": "cc.AnimationClip"
     }
   },
@@ -163,7 +163,7 @@
       "clone": null
     },
     "clip": {
-      "__uuid__": "701e0f9f-f87b-42e7-910a-af8576ef1695@fd8a6",
+      "__uuid__": "f49cbc51-c1ca-4e69-a669-04d75f625532@c2696",
       "__expectedType__": "cc.AnimationClip"
     }
   },

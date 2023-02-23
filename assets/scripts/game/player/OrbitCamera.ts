@@ -186,7 +186,7 @@ export default class OrbitCamera extends Component {
         rotation.z = 0;
     }
 
-    private _originalRadius: number = 3;
+    private _originalRadius: number = 5;
 
     /**
      * 平移前推视角，以躲开遮挡物

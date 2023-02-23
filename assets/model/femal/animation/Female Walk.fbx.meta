@@ -2,40 +2,24 @@
   "ver": "2.3.3",
   "importer": "fbx",
   "imported": true,
-  "uuid": "62199160-8d43-4449-8618-f15cf581de07",
+  "uuid": "0f19e14a-1dda-448c-9e09-6d7cf54678f3",
   "files": [
     "__original-animation-0.cconb"
   ],
   "subMetas": {
-    "79072": {
-      "importer": "gltf-scene",
-      "uuid": "62199160-8d43-4449-8618-f15cf581de07@79072",
-      "displayName": "",
-      "id": "79072",
-      "name": "Walking.prefab",
-      "userData": {
-        "gltfIndex": 0
-      },
-      "ver": "1.0.12",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "dc888": {
+    "c0924": {
       "importer": "gltf-animation",
-      "uuid": "62199160-8d43-4449-8618-f15cf581de07@dc888",
+      "uuid": "0f19e14a-1dda-448c-9e09-6d7cf54678f3@c0924",
       "displayName": "",
-      "id": "dc888",
-      "name": "Walking.animation",
+      "id": "c0924",
+      "name": "Female Walk.animation",
       "userData": {
         "gltfIndex": 0,
         "wrapMode": 2,
         "sample": 30,
         "span": {
           "from": 0,
-          "to": 0.9666666388511658
+          "to": 1.1666666269302368
         },
         "events": []
       },
@@ -43,6 +27,22 @@
       "imported": true,
       "files": [
         ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "c3eeb": {
+      "importer": "gltf-scene",
+      "uuid": "0f19e14a-1dda-448c-9e09-6d7cf54678f3@c3eeb",
+      "displayName": "",
+      "id": "c3eeb",
+      "name": "Female Walk.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
       ],
       "subMetas": {}
     }
@@ -55,26 +55,26 @@
     "animationImportSettings": [
       {
         "name": "mixamo.com",
-        "duration": 0.9666666388511658,
+        "duration": 1.1666666269302368,
         "fps": 30,
         "splits": [
           {
-            "name": "Walking",
+            "name": "Female Walk",
             "from": 0,
-            "to": 0.9666666388511658,
+            "to": 1.1666666269302368,
             "wrapMode": 2
           }
         ]
       }
     ],
-    "redirect": "62199160-8d43-4449-8618-f15cf581de07@79072",
+    "redirect": "0f19e14a-1dda-448c-9e09-6d7cf54678f3@c3eeb",
     "assetFinder": {
       "meshes": [],
       "skeletons": [],
       "textures": [],
       "materials": [],
       "scenes": [
-        "62199160-8d43-4449-8618-f15cf581de07@79072"
+        "0f19e14a-1dda-448c-9e09-6d7cf54678f3@c3eeb"
       ]
     }
   }
