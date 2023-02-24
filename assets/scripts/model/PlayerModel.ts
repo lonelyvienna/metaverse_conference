@@ -1,7 +1,7 @@
 /*
  * @Author: guofuyan
  * @Date: 2022-06-16 11:00:17
- * @LastEditTime: 2022-07-16 09:13:39
+ * @LastEditTime: 2023-02-23 23:03:51
  * @Description: 玩家数据类
  */
 
@@ -77,7 +77,12 @@ export class Player {
 
     public header: string;       //微信头像
 
+    public state : PlayerState = PlayerState.idle;      //角色的状态
+
+    public sportMode : PlayerState = PlayerState.walk;      //角色运动的模式，如果滑动摇杆是跑还是走
+
     public headersprite: SpriteFrame
+
     public constructor(openid: string) {
 
         this.openid = openid;
@@ -100,4 +105,15 @@ export class Player {
 export class GameConfig {
 
     public musicIsPlaying: boolean = true;        //背景音乐是否正在播放
+}
+
+/**
+ * 玩家的动作
+ */
+export enum PlayerState{
+
+    idle,
+    walk,
+    run,
+    jumpe
 }

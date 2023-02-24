@@ -572,6 +572,7 @@
         ],
         "_props": [
           {
+            "roughness": 0.8,
             "mainTexture": {
               "__uuid__": "51e4cad4-dd94-4fef-9879-244ba1ab45f7@6c48a",
               "__expectedType__": "cc.Texture2D"
@@ -638,6 +639,7 @@
         ],
         "_props": [
           {
+            "roughness": 0.8,
             "mainTexture": {
               "__uuid__": "d2f4372b-8288-4b0e-8918-d572cded0977@6c48a",
               "__expectedType__": "cc.Texture2D"
@@ -762,6 +764,7 @@
         ],
         "_props": [
           {
+            "roughness": 0.8,
             "mainTexture": {
               "__uuid__": "48fd7570-65ab-4b52-853d-df347943f715@6c48a",
               "__expectedType__": "cc.Texture2D"
@@ -824,6 +827,7 @@
         ],
         "_props": [
           {
+            "roughness": 0.8,
             "mainTexture": {
               "__uuid__": "00b8fe28-86b8-4bb6-9bdb-a545592a81ae@6c48a",
               "__expectedType__": "cc.Texture2D"
@@ -886,6 +890,7 @@
         ],
         "_props": [
           {
+            "roughness": 0.8,
             "mainTexture": {
               "__uuid__": "00b8fe28-86b8-4bb6-9bdb-a545592a81ae@6c48a",
               "__expectedType__": "cc.Texture2D"

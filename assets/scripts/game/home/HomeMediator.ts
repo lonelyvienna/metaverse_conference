@@ -1,6 +1,6 @@
 import BaseMediator from "../../../default/mvc/core/base/BaseMediator";
 import HomeView from "./HomeView";
-import PlayerModel, { Player } from "../../model/PlayerModel";
+import PlayerModel, { Player, PlayerState } from "../../model/PlayerModel";
 import HttpUtils from "../../../default/mvc/util/HttpUtils";
 import { Facade } from "../../../default/mvc/core/Facade";
 import OtherMediator from "../other/OtherMediator";
@@ -17,6 +17,8 @@ export default class HomeMediator extends BaseMediator {
 
     public init(data?: any): void {
 
+        this.player = Facade.getInstance().getModel(PlayerModel).getPlayer();
+
         //下面进行一些简单的示例，开发时经常用到这些功能，微信内开发几乎必不可少
 
         //this.initwechatBaseData();      //处理微信基础数据，例如头像、昵称、openid
@@ -29,6 +31,15 @@ export default class HomeMediator extends BaseMediator {
             Facade.getInstance().openView(OtherMediator, OtherView, "");        //进入下一个页面
 
             this.view.closeView();      //关闭面板
+
+        }, this);
+
+        //切换动画状态
+        this.bindEvent(HomeView.EventChangeAnimationState, (str: "") => {
+
+            this.player.sportMode = this.player.sportMode == PlayerState.walk ? PlayerState.run : PlayerState.walk;
+
+            this.view.setWalkOrRunSpriteFrameByState(this.player.sportMode);        //切换贴图
 
         }, this);
     }
