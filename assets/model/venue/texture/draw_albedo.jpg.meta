@@ -2,7 +2,7 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "384f01a7-cc31-4d23-b229-1446e1e85e64",
+  "uuid": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25",
   "files": [
     ".jpg",
     ".json"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "384f01a7-cc31-4d23-b229-1446e1e85e64@6c48a",
-      "displayName": "baffle_ao_1",
+      "uuid": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25@6c48a",
+      "displayName": "draw_albedo",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "nearest",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "384f01a7-cc31-4d23-b229-1446e1e85e64",
+        "imageUuidOrDatabaseUri": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25",
         "visible": true
       },
       "ver": "1.0.22",
@@ -37,6 +37,6 @@
     "type": "texture",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": false,
-    "redirect": "384f01a7-cc31-4d23-b229-1446e1e85e64@6c48a"
+    "redirect": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25@6c48a"
   }
 }

@@ -2,16 +2,16 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25",
+  "uuid": "19554c07-a994-4f72-aba1-026503d04a7f",
   "files": [
-    ".jpg",
-    ".json"
+    ".json",
+    ".png"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25@6c48a",
-      "displayName": "draw_albedo_1",
+      "uuid": "19554c07-a994-4f72-aba1-026503d04a7f@6c48a",
+      "displayName": "venue_glass_tex",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "nearest",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25",
+        "imageUuidOrDatabaseUri": "19554c07-a994-4f72-aba1-026503d04a7f",
         "visible": true
       },
       "ver": "1.0.22",
@@ -36,7 +36,7 @@
   "userData": {
     "type": "texture",
     "fixAlphaTransparencyArtifacts": true,
-    "hasAlpha": false,
-    "redirect": "6e6758d2-a1fe-4cce-9f8b-b22876c51c25@6c48a"
+    "hasAlpha": true,
+    "redirect": "19554c07-a994-4f72-aba1-026503d04a7f@6c48a"
   }
 }

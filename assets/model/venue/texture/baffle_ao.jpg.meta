@@ -2,16 +2,16 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "1e572497-b8fa-4e23-9edd-903715d24a0b",
+  "uuid": "384f01a7-cc31-4d23-b229-1446e1e85e64",
   "files": [
-    ".json",
-    ".png"
+    ".jpg",
+    ".json"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "1e572497-b8fa-4e23-9edd-903715d24a0b@6c48a",
-      "displayName": "meeting1",
+      "uuid": "384f01a7-cc31-4d23-b229-1446e1e85e64@6c48a",
+      "displayName": "baffle_ao",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "nearest",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "1e572497-b8fa-4e23-9edd-903715d24a0b",
+        "imageUuidOrDatabaseUri": "384f01a7-cc31-4d23-b229-1446e1e85e64",
         "visible": true
       },
       "ver": "1.0.22",
@@ -37,6 +37,6 @@
     "type": "texture",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": false,
-    "redirect": "1e572497-b8fa-4e23-9edd-903715d24a0b@6c48a"
+    "redirect": "384f01a7-cc31-4d23-b229-1446e1e85e64@6c48a"
   }
 }

@@ -2,7 +2,7 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "19554c07-a994-4f72-aba1-026503d04a7f",
+  "uuid": "1e572497-b8fa-4e23-9edd-903715d24a0b",
   "files": [
     ".json",
     ".png"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "19554c07-a994-4f72-aba1-026503d04a7f@6c48a",
-      "displayName": "venue_glass_tex_1",
+      "uuid": "1e572497-b8fa-4e23-9edd-903715d24a0b@6c48a",
+      "displayName": "meeting",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "nearest",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "19554c07-a994-4f72-aba1-026503d04a7f",
+        "imageUuidOrDatabaseUri": "1e572497-b8fa-4e23-9edd-903715d24a0b",
         "visible": true
       },
       "ver": "1.0.22",
@@ -36,7 +36,7 @@
   "userData": {
     "type": "texture",
     "fixAlphaTransparencyArtifacts": true,
-    "hasAlpha": true,
-    "redirect": "19554c07-a994-4f72-aba1-026503d04a7f@6c48a"
+    "hasAlpha": false,
+    "redirect": "1e572497-b8fa-4e23-9edd-903715d24a0b@6c48a"
   }
 }
