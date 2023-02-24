@@ -10,6 +10,7 @@
         position: relative;
         -webkit-font-smoothing: subpixel-antialiased;
         margin: 0px;
+        padding: 0px;
         background: #2c2c2c;
         /* linear-gradient(rgb(45, 45, 45), rgb(25, 25, 25)); */
         color: rgb(189, 189, 189);
@@ -274,11 +275,12 @@
         max-height: var(--top-and-bottom);
         border-right: solid 0.5px rgb(87, 86, 86);
         flex: 1;
+        scroll-behavior: smooth;
         /* position: relative;        */
     }
 
     .nodearrow {
-        transition: all 0.2s;
+        transition: transform 0.2s;
     }
 
     .nodearrow:hover{
@@ -443,6 +445,10 @@
         width: 8em;
     }
 
+    .arrayItems .nodePropertyTitle{
+        width:1em;
+    }
+
     /* .comProperty */
     a {
         color: rgb(14, 127, 233);
@@ -475,11 +481,15 @@
     .comProperty .nodePropertySubTitle {
         /* overflow-x: hidden; */
         width: auto;
+        min-width: 100px;
         max-width: 172px;
         word-wrap: break-word;
         /* word-break:normal; */
         /* white-space: wrap; */
         line-height: 0.95em;
+    }
+    .comProperty .nodePropertySubTitle :hover {
+        background-color: rgba(0, 0, 0, 0.29);
     }
 
     .prewrap {
@@ -532,7 +542,7 @@
         bottom: 0;
         height: 100%;
         max-height: calc(100%);
-        width: 20em;
+        width: min(calc(100vw - 32px), 20em);
         box-shadow: -1px 0 4px 0px black;
         background-color: #2c2c2c;
         padding: 1em;
@@ -737,10 +747,20 @@
         margin-top: 1em;
         margin-bottom: 1em;
     }
+
+    .nanStr{
+        background:black;
+        padding-left:10px;
+        padding-right:10px;
+        z-index:1000;
+        color: white;
+    }
+
 </style>
 
 <body>
-    <div id="app" style="visibility:hidden;">
+    <div id="app" style="visibility:hidden;" @contextmenu="showAppMenu" @click="showResolutionSelector=false">
+        <validate-panel></validate-panel>
         <div class="gamePanel" :style="setting.gamePanelStyle">
             <div class="gamebtns">
                 <div class="gameBtnsLeft">
@@ -759,14 +779,14 @@
                         <span v-if="!isMuted" class="iconfont icon-sound-"></span>
                         <span v-if="isMuted" class="iconfont icon-sound-1"></span>
                     </button>
-                    <button @contextmenu="toggle3dHover" @click="toggleHover" :style="hoverBtnStyle" title="find by Hover, left click for 2d | right click for 3d">
+                    <button @contextmenu.stop="toggle3dHover" @click="toggleHover" :style="hoverBtnStyle" title="find by Hover, left click for 2d | right click for 3d">
                         <span class="iconfont icon-aim1"></span>
                         <label style="position: absolute;top: -0.3em;right: -0.6em;font-size: smaller;">{{hoverMark}}</label>
                     </button>
                     <button @click="toggleDesignMode" :style="designBtnStyle" title="toggle design mode">
                         <span class="iconfont icon-drag"></span>
                     </button>
-                    <button @click="showResolutionSelector=!showResolutionSelector" title="adjust resolution and rotation">
+                    <button @click.stop="showResolutionSelector=!showResolutionSelector" title="adjust resolution and rotation" :style="resolutionBtnStyle">
                         <span class="iconfont icon-xuanzhuan"></span>
                     </button>
                     <button v-if="!showDevToolInTab" @click="openWvDevTool" title="Open DevTool of Game Page">
@@ -791,7 +811,7 @@
         <div class="nodePanel" v-show="!setting.simpleMode">
             <div class="tab">
                 <div class="tabs">
-                    <div :class="{tabItem:true,selected:tab==0}" @click="tab=0" @contextmenu="showMenu">
+                    <div :class="{tabItem:true,selected:tab==0}" @click="tab=0" @contextmenu.stop="showMenu">
                         <span class="iconfont icon-shuxingjiegou"></span>{{sceneName}}
                         <a v-show="showRefreshTreeBtn" @click="forceUpdateTree" class="iconfont icon-shuaxin"></a>
                     </div>
@@ -841,7 +861,7 @@
                 </div>
                 <search-panel></search-panel>
             </div>
-            <webview v-show="tab==1 && showDevToolInTab" webpreferences="contextIsolation=no" ref="devtools" src="about:blank"></webview>
+            <webview v-show="tab==1 && showDevToolInTab" nodeintegrationinsubframes="true" webpreferences="contextIsolation=no" ref="devtools" src="about:blank"></webview>
             <console-panel v-if="!showDevToolInTab && tab==1"></console-panel>
             <cocos-panel v-if="tab==2"></cocos-panel>
             <extension-panel v-if="tab==3"></extension-panel>
@@ -864,9 +884,14 @@
                 <!-- <hr> -->
                 <label>
                     Log Count Under GameView:
-                    <!-- {{logCount}} -->
                     <input type="number" @change="saveToStorage" v-model="logCount" min="0" max="100" step="1" />
                 </label>
+                <label>
+                    Open Array if length <=:
+                    <input type="number" @change="saveToStorage" v-model.number="openArrayLimit" step="1" min="0" max="100"  />
+                </label>
+                <hr>
+                <br>
                 <label>
                     Url Parameters:
                     <!-- {{logCount}} -->
@@ -894,7 +919,7 @@
                 </label>
                 <hr>
                 <br>
-                <b>Need Restart Inspector After Change</b>
+                <b>Need Restart Inspector/CocosCreator After Change</b>
                 <label>
                     <input type="checkbox" @change="saveToStorage" v-model="disableWebSec" />
                     Disable Web Security
@@ -957,7 +982,10 @@
                 </div>
             </div>
         </transition>
-    </div>
+    </div>    
+    <!-- <div class="validatePanel">
+
+    </div> -->
 
 
     <script src="./app.js">

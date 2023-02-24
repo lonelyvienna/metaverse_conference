@@ -1,6 +1,6 @@
 {
   "name": "cocos_inspector",
-  "version": "1.0.5",
+  "version": "1.2.8",
   "package_version":2,
   "description": "Cocos Runtime Inspector for cocos creator3.x",
   "author": "chuan.zhang",
@@ -26,13 +26,19 @@
         "path":"i18n:menu.extension/Cocos Inspector",
         "label":"open Custom Page",
         "message":"openCustomPage"
+      },
+      {
+        "path":"i18n:menu.extension/Cocos Inspector",
+        "label":"refresh",
+        "message":"refresh"
       }
     ],
     "messages":{
       "previewMode":{"methods":["previewMode"]},
       "buildMobileMode":{"methods":["buildMobileMode"]},
       "buildDesktopMode":{"methods":["buildDesktopMode"]},
-      "openCustomPage":{"methods":["openCustomPage"]}
+      "openCustomPage":{"methods":["openCustomPage"]},
+      "refresh":{"methods":["refresh"]}
     }
   },
   

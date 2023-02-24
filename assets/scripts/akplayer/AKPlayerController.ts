@@ -23,7 +23,7 @@ export class AKPlayerController extends Component {
         this._localFlv = value;
 
     }
- 
+
 
     @property({ type: Button })
     public btnPlay: Button = null;
@@ -64,7 +64,7 @@ export class AKPlayerController extends Component {
         this.btnStop?.node.on("click",this.onStop, this);
         this.btnVolume?.node.on("click", this.onMute, this);
 
-     
+
         this.videoPlayer.event.on(PlayerEvent.stats,this.onStats,this);
         this.videoPlayer.event.on(PlayerEvent.stop, this.onDone,this);
         this.videoPlayer.event.on(PlayerEvent.play,this.onVideoPlay,this);
@@ -75,7 +75,7 @@ export class AKPlayerController extends Component {
         this.slider?.handle.node.on(NodeEventType.TOUCH_CANCEL,this.onSliderTo,this);
         this._initView();
 
-        
+
     }
     protected onDisable(): void {
         this.btnPlay?.node.off("click",this.onPlay,this);
@@ -90,8 +90,8 @@ export class AKPlayerController extends Component {
         this.slider?.handle.node.off(NodeEventType.TOUCH_END,this.onSliderTo,this);
         this.slider?.node.off(NodeEventType.TOUCH_CANCEL,this.onSliderTo,this);
         this.slider?.handle.node.off(NodeEventType.TOUCH_CANCEL,this.onSliderTo,this);
-       
-       
+
+
     }
 
     onVideoPlay():void {
@@ -128,18 +128,18 @@ export class AKPlayerController extends Component {
     }
     protected onSliderTo(e:EventTouch){
         let value = (this.pb && this.slider)?this.slider.progress:0;
-        this.seek(value);   
+        this.seek(value);
     }
 
     public updatePlayerInfo(url:string,isStream:boolean = false){
         this.isStream = isStream;
         this.url = url;
     }
- 
+
     protected onSlider(silder:Slider){
-       
+
        if(this.pb && this.slider) this.pb.progress = this.slider.progress;
-        
+
     }
     public onStartLoading(){
         if(!this.nodeLoading)return;
@@ -147,7 +147,7 @@ export class AKPlayerController extends Component {
             this.onStopLoading();
         }
         this.nodeLoading.active = true;
-        this._loadingTw = tween(this.nodeLoading).by( 1, {eulerAngles:v3(0,0,360)}).repeat(1000).start();   
+        this._loadingTw = tween(this.nodeLoading).by( 1, {eulerAngles:v3(0,0,360)}).repeat(1000).start();
     }
     public onStopLoading(){
         if(this._loadingTw){
@@ -192,19 +192,19 @@ export class AKPlayerController extends Component {
 
             if (localUrl && loader.md5Pipe) {
                 localUrl = loader.md5Pipe.transformURL(localUrl);
-               
+
             }
             this.url = window.location.href + localUrl;
             isStream = false;
         }
-       
+
         if(!this._inited){
             this.videoPlayer.play(this.url,this.isStream);
-            
+
             this._inited = true;
             this.onStartLoading();
             this.changeTexture(this.btnPlay,"pause");
-           
+
         }else{
            this.pause(this.videoPlayer.playing);
         }
@@ -241,5 +241,5 @@ export class AKPlayerController extends Component {
     public setVolume(value:boolean){
         //todo
     }
- 
+
 }

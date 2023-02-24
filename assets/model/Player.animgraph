@@ -1,0 +1,266 @@
+[
+  {
+    "__type__": "cc.animation.AnimationGraph",
+    "_name": "",
+    "_objFlags": 0,
+    "_native": "",
+    "_layers": [
+      {
+        "__id__": 1
+      }
+    ],
+    "_variables": {
+      "walk": {
+        "__id__": 17
+      }
+    }
+  },
+  {
+    "__type__": "cc.animation.Layer",
+    "_stateMachine": {
+      "__id__": 2
+    },
+    "name": "",
+    "weight": 1,
+    "mask": null
+  },
+  {
+    "__type__": "cc.animation.StateMachine",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770558366480.05496592900534103",
+      "clone": null,
+      "viewport": {
+        "scale": 1.1600000000000001,
+        "top": -9.39666757554161,
+        "left": -113.95361854216799
+      }
+    },
+    "_states": [
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 4
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 8
+      }
+    ],
+    "_transitions": [
+      {
+        "__id__": 10
+      },
+      {
+        "__id__": 11
+      },
+      {
+        "__id__": 14
+      }
+    ],
+    "_entryState": {
+      "__id__": 3
+    },
+    "_exitState": {
+      "__id__": 4
+    },
+    "_anyState": {
+      "__id__": 5
+    }
+  },
+  {
+    "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770558366480.9950396149188336",
+      "clone": null,
+      "centerX": -129.7169811320755,
+      "centerY": -31.1320754716981
+    },
+    "name": "Entry"
+  },
+  {
+    "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770558366480.8455491256268455",
+      "clone": null,
+      "centerX": 125,
+      "centerY": 0
+    },
+    "name": "Exit"
+  },
+  {
+    "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770558366480.6464735882770649",
+      "clone": null,
+      "centerX": -128.77358490566036,
+      "centerY": 66.03773584905662
+    },
+    "name": "Any"
+  },
+  {
+    "__type__": "cc.animation.Motion",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770610649820.19041901616802814",
+      "clone": null,
+      "centerX": 104.49672241868643,
+      "centerY": 97.35235543086611
+    },
+    "name": "Walking",
+    "_components": [],
+    "motion": {
+      "__id__": 7
+    },
+    "speed": 1,
+    "speedMultiplier": "",
+    "speedMultiplierEnabled": false
+  },
+  {
+    "__type__": "cc.animation.ClipMotion",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770610649860.7668521081221575",
+      "clone": null
+    },
+    "clip": {
+      "__uuid__": "d0256bc0-15c7-4510-834f-29c056fca68b@dc888",
+      "__expectedType__": "cc.AnimationClip"
+    }
+  },
+  {
+    "__type__": "cc.animation.Motion",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770614379880.34742039904414934",
+      "clone": null,
+      "centerX": 103.93105132004303,
+      "centerY": -31.06891500538788
+    },
+    "name": "Breathing Idle",
+    "_components": [],
+    "motion": {
+      "__id__": 9
+    },
+    "speed": 1,
+    "speedMultiplier": "",
+    "speedMultiplierEnabled": false
+  },
+  {
+    "__type__": "cc.animation.ClipMotion",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770614379940.8150394329913493",
+      "clone": null
+    },
+    "clip": {
+      "__uuid__": "f49cbc51-c1ca-4e69-a669-04d75f625532@c2696",
+      "__expectedType__": "cc.AnimationClip"
+    }
+  },
+  {
+    "__type__": "cc.animation.Transition",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770799947970.4411427513462902",
+      "clone": null
+    },
+    "from": {
+      "__id__": 3
+    },
+    "to": {
+      "__id__": 8
+    },
+    "conditions": []
+  },
+  {
+    "__type__": "cc.animation.AnimationTransition",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770799947970.64985768946407",
+      "clone": null
+    },
+    "from": {
+      "__id__": 8
+    },
+    "to": {
+      "__id__": 6
+    },
+    "conditions": [
+      {
+        "__id__": 12
+      }
+    ],
+    "duration": 0.3,
+    "relativeDuration": false,
+    "exitConditionEnabled": false,
+    "destinationStart": 0,
+    "relativeDestinationStart": false,
+    "interruptionSource": 0,
+    "_exitCondition": 1
+  },
+  {
+    "__type__": "cc.animation.UnaryCondition",
+    "operator": 0,
+    "operand": {
+      "__id__": 13
+    }
+  },
+  {
+    "__type__": "cc.animation.BindableBoolean",
+    "variable": "walk",
+    "value": false
+  },
+  {
+    "__type__": "cc.animation.AnimationTransition",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16770799947970.9214608954919106",
+      "clone": null
+    },
+    "from": {
+      "__id__": 6
+    },
+    "to": {
+      "__id__": 8
+    },
+    "conditions": [
+      {
+        "__id__": 15
+      }
+    ],
+    "duration": 0.3,
+    "relativeDuration": false,
+    "exitConditionEnabled": false,
+    "destinationStart": 0,
+    "relativeDestinationStart": false,
+    "interruptionSource": 0,
+    "_exitCondition": 1
+  },
+  {
+    "__type__": "cc.animation.UnaryCondition",
+    "operator": 1,
+    "operand": {
+      "__id__": 16
+    }
+  },
+  {
+    "__type__": "cc.animation.BindableBoolean",
+    "variable": "walk",
+    "value": false
+  },
+  {
+    "__type__": "cc.animation.PlainVariable",
+    "_type": 1,
+    "_value": false
+  }
+]
