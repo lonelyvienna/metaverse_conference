@@ -1,4 +1,4 @@
-import { Component, _decorator, geometry, Vec3, EventTouch, Touch, Quat, Vec2, Node, EventMouse, lerp, director, Canvas, macro, view, PhysicsSystem, systemEvent, SystemEventType, math } from 'cc'
+import { Component, _decorator, geometry, Vec3, EventTouch, Touch, Quat, Vec2, Node, EventMouse, lerp, director, Canvas, macro, view, PhysicsSystem, systemEvent, SystemEventType, math, input, Input } from 'cc'
 import { EDITOR } from 'cc/env';
 const { ccclass, property, type } = _decorator;
 const { ray } = geometry;
@@ -95,9 +95,13 @@ export default class OrbitCamera extends Component {
         if (canvas && canvas.node) {
 
             if (this.enableTouch) {
-                canvas.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this)
-                canvas.node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this)
-                canvas.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this)
+                // canvas.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this)
+                // canvas.node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this)
+                // canvas.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this)
+
+                input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+                input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+                input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
             }
 
             if (this.enableScaleRadius) {
@@ -106,13 +110,13 @@ export default class OrbitCamera extends Component {
         }
         else {
             if (this.enableTouch) {
-                systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this)
-                systemEvent.on(SystemEventType.TOUCH_MOVE, this.onTouchMove, this)
-                systemEvent.on(SystemEventType.TOUCH_END, this.onTouchEnd, this)
+                // systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this)
+                // systemEvent.on(SystemEventType.TOUCH_MOVE, this.onTouchMove, this)
+                // systemEvent.on(SystemEventType.TOUCH_END, this.onTouchEnd, this)
             }
 
             if (this.enableScaleRadius) {
-                systemEvent.on(SystemEventType.MOUSE_WHEEL, this.onMouseWhee, this)
+                // systemEvent.on(SystemEventType.MOUSE_WHEEL, this.onMouseWhee, this)
             }
         }
 
@@ -146,7 +150,10 @@ export default class OrbitCamera extends Component {
         this._touched = true;
     }
 
-    onTouchMove(touch?: Touch, event?: EventTouch) {
+    onTouchMove(event?: EventTouch) {
+
+        const touch = event.touch!;
+
         if (!this._touched || this.pause) return;
         let delta = touch!.getDelta()
 

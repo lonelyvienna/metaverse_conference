@@ -1,67 +1,104 @@
 /*
  * @Author: guofuyan
  * @Date: 2023-02-24 18:17:19
- * @LastEditTime: 2023-02-24 19:10:24
- * @Description: 
+ * @LastEditTime: 2023-02-26 22:53:58
+ * @Description:
  */
-import { _decorator, Component, Node, ITriggerEvent, BoxCollider, director, tween, Vec3 } from 'cc';
+import { _decorator, Component, Node, director, Vec3, instantiate, Prefab, tween, BoxCollider } from 'cc';
+import { Facade } from '../../../default/mvc/core/Facade';
+import ITResourceLoader from '../../../default/mvc/loader/ITResourceLoader';
+import PlayerModel, { Player, PlayerState } from '../../model/PlayerModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('Chair')
 export class Chair extends Component {
 
+    public personSittingState: boolean = false;     //位置是否有人
+
     private sitTip: Node = null;        //坐下的标识
 
     private mainCamera: Node = null;
 
-    public start() {
+    private playerNode: Node = null;
 
-        //默认隐藏坐下的标识
-        this.sitTip = this.node.getChildByName("SitTip");
-        if (this.sitTip != null) this.sitTip.setScale(Vec3.ZERO);
+    private isPlayerIn: boolean = false;       //玩家是否进入
+    private preIsPlayerIn: boolean = false;        //玩家是否进入的前一个状态
+    private player: Player = null;      //用户数据
+
+    public start() {
 
         //查找相机
         this.mainCamera = director.getScene().getChildByName("Main Camera");
 
-        //注册触发器
-        let collider = this.node.getComponents(BoxCollider)[1];
+        this.playerNode = director.getScene().getChildByName("Player");
 
-        collider.on('onTriggerEnter', this.onTriggerEnter, this);
-        collider.on('onTriggerExit', this.onTriggerExit, this);
+        this.player = Facade.getInstance().getModel(PlayerModel).getPlayer();
+
+        this.creatSitTip();     //如果不存在节点，创建
     }
 
     update(dt: number) {
 
-        if (this.sitTip.activeInHierarchy) this.sitTip.lookAt(this.mainCamera.position);        //面向主相机
-    }
+        if (this.personSittingState || !this.sitTip) return;     //如果有人坐在位置，则不进行以下的操作
 
-    /**
-     * 人靠近椅子
-     */
-    private onTriggerEnter(event: ITriggerEvent) {
+        //面向摄像机
+        if (this.sitTip.activeInHierarchy) this.sitTip.lookAt(this.mainCamera.position);
 
-        let node = event.otherCollider.node;        //触发器碰撞到的物体;
+        //判断与玩家的距离，决定是否显示“坐下”标记
+        if (Vec3.distance(this.node.worldPosition, this.playerNode.worldPosition) < 2) this.isPlayerIn = true;
+        else this.isPlayerIn = false;
 
-        if (node.name == "Player") {
+        //如果用户是坐着的，则任何椅子不再检测是否靠近
+        if (this.player.state == PlayerState.sit) this.isPlayerIn = false;
 
-            tween(this.sitTip)
-                .to(.2, { scale: new Vec3(.8, .8, .8) })
-                .start()
+        //用户进入或者离开识别范围，进行“坐下”标记的动画
+        if (this.isPlayerIn != this.preIsPlayerIn) {
+
+            if (this.isPlayerIn)
+                tween(this.sitTip)
+                    .to(.5, { scale: Vec3.ONE })
+                    .start()
+            else
+                tween(this.sitTip)
+                    .to(.5, { scale: Vec3.ZERO })
+                    .start()
+
+            this.preIsPlayerIn = this.isPlayerIn;
         }
     }
 
     /**
-     * 人离开椅子
+     * 创建提示
      */
-    private onTriggerExit(event: ITriggerEvent) {
+    creatSitTip() {
 
-        let node = event.otherCollider.node;        //触发器碰撞到的物体;
+        var self = this;
 
-        if (node.name == "Player") {
+        ITResourceLoader.loadRes("prefab/game/SitTip", Prefab, (err: any, res: Prefab) => {
 
-            tween(this.sitTip)
-            .to(.2, { scale: Vec3.ZERO })
-            .start()
-        }
+            if (!err) {
+
+                self.sitTip = instantiate(res);        //实例化
+
+                self.node.addChild(self.sitTip);     //添加到场景
+
+                self.sitTip.setScale(Vec3.ZERO);        //默认隐藏
+            }
+        });
     }
+
+    /**
+     * 坐下
+     */
+    takeASeat() {
+
+        this.personSittingState = true;
+
+        this.sitTip.setScale(Vec3.ZERO);
+    }
+
+    /**
+     * 站起来
+     */
+    standUp() { this.personSittingState = false; }
 }

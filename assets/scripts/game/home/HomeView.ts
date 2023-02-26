@@ -1,13 +1,14 @@
 /*
  * @Author: guofuyan
  * @Date: 2022-06-16 01:02:47
- * @LastEditTime: 2023-02-23 23:49:25
+ * @LastEditTime: 2023-02-26 01:02:40
  * @LastEditors: guofuyan
  * @Description:
  */
 import { Button, director, Sprite, SpriteFrame, _decorator } from "cc";
 import { BaseView } from "../../../default/mvc/core/base/BaseView";
 import AudioUtil from "../../../default/mvc/util/AudioUtil";
+import EventMgr from "../../../default/standar/event/EventMgr";
 import UIEffectHelper from "../../../default/standar/UIEffectHelper";
 import { PlayerState } from "../../model/PlayerModel";
 const { ccclass, property } = _decorator;
@@ -20,7 +21,7 @@ export default class HomeView extends BaseView {
     public static readonly EventChangeAnimationState = "ChangeAnimationState";
 
     @property(Button)
-    public walkOrRunButton : Button = null;
+    public walkOrRunButton: Button = null;
 
     @property(SpriteFrame)
     public walkSpriteFrame: SpriteFrame = null;        //走的贴图
@@ -63,11 +64,20 @@ export default class HomeView extends BaseView {
      */
     setWalkOrRunSpriteFrameByState(state: PlayerState) {
 
-        if(state == PlayerState.walk)
+        if (state == PlayerState.walk)
             this.walkOrRunButton.getComponent(Sprite).spriteFrame = this.walkSpriteFrame;
 
-        else if(state == PlayerState.run)
+        else if (state == PlayerState.run)
             this.walkOrRunButton.getComponent(Sprite).spriteFrame = this.runSpriteFrame;
+    }
+
+    onJumpButtonClick() {
+
+        let currentSportMode = "walk";
+
+        if (this.walkOrRunButton.getComponent(Sprite).spriteFrame == this.runSpriteFrame) currentSportMode = "run";
+
+        EventMgr.getInstance().sendListener("InputJump", { "currentSportMode": currentSportMode });      //跳跃动作，并附带一个目前的运动模式
     }
 
     public static path(): string {

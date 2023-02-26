@@ -11,13 +11,13 @@
     ],
     "_variables": {
       "walk": {
-        "__id__": 40
+        "__id__": 43
       },
       "run": {
-        "__id__": 41
+        "__id__": 44
       },
-      "site": {
-        "__id__": 42
+      "sit": {
+        "__id__": 45
       }
     }
   },
@@ -89,6 +89,9 @@
       },
       {
         "__id__": 37
+      },
+      {
+        "__id__": 40
       }
     ],
     "_entryState": {
@@ -129,8 +132,8 @@
       "name": "",
       "id": "16771503711590.8371617001220908",
       "clone": null,
-      "centerX": -123.87127024722935,
-      "centerY": 70.68030690537083
+      "centerX": -131.47996589940323,
+      "centerY": 73.94117647058823
     },
     "name": "Any"
   },
@@ -230,7 +233,7 @@
       "name": "",
       "id": "16772228291170.8641919641271334",
       "clone": null,
-      "centerX": -124.76087487262231,
+      "centerX": -132.3695705247962,
       "centerY": 170.13040293817937
     },
     "name": "Sitting",
@@ -529,7 +532,11 @@
   },
   {
     "__type__": "cc.animation.AnimationTransition",
-    "__editorExtras__": null,
+    "__editorExtras__": {
+      "name": "",
+      "id": "16772488321750.7870251765627148",
+      "clone": null
+    },
     "from": {
       "__id__": 5
     },
@@ -543,7 +550,7 @@
     ],
     "duration": 0.3,
     "relativeDuration": false,
-    "exitConditionEnabled": true,
+    "exitConditionEnabled": false,
     "destinationStart": 0,
     "relativeDestinationStart": false,
     "interruptionSource": 0,
@@ -558,7 +565,45 @@
   },
   {
     "__type__": "cc.animation.BindableBoolean",
-    "variable": "site",
+    "variable": "sit",
+    "value": false
+  },
+  {
+    "__type__": "cc.animation.AnimationTransition",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16774171624100.024084773471950927",
+      "clone": null
+    },
+    "from": {
+      "__id__": 12
+    },
+    "to": {
+      "__id__": 6
+    },
+    "conditions": [
+      {
+        "__id__": 41
+      }
+    ],
+    "duration": 0,
+    "relativeDuration": false,
+    "exitConditionEnabled": false,
+    "destinationStart": 0,
+    "relativeDestinationStart": false,
+    "interruptionSource": 0,
+    "_exitCondition": 1
+  },
+  {
+    "__type__": "cc.animation.UnaryCondition",
+    "operator": 1,
+    "operand": {
+      "__id__": 42
+    }
+  },
+  {
+    "__type__": "cc.animation.BindableBoolean",
+    "variable": "sit",
     "value": false
   },
   {

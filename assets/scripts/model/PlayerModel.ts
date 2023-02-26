@@ -1,12 +1,13 @@
 /*
  * @Author: guofuyan
  * @Date: 2022-06-16 11:00:17
- * @LastEditTime: 2023-02-23 23:03:51
+ * @LastEditTime: 2023-02-24 22:25:12
  * @Description: 玩家数据类
  */
 
 import { SpriteFrame } from "cc";
 import BaseModel from "../../default/mvc/core/base/BaseModel";
+import { Chair } from "../game/player/Chair";
 import Notification from "../Notification";
 
 export default class PlayerModel extends BaseModel {
@@ -29,11 +30,11 @@ export default class PlayerModel extends BaseModel {
     /**
      * 开始游戏
      */
-    startGame(){
+    startGame() {
 
         this.isGaming = true;       //开始游戏
 
-        this.sendNoti(Notification.StartGame,"");
+        this.sendNoti(Notification.StartGame, "");
     }
 
     public getPlayer(): Player {
@@ -77,11 +78,13 @@ export class Player {
 
     public header: string;       //微信头像
 
-    public state : PlayerState = PlayerState.idle;      //角色的状态
+    public state: PlayerState = PlayerState.idle;      //角色的状态
 
-    public sportMode : PlayerState = PlayerState.walk;      //角色运动的模式，如果滑动摇杆是跑还是走
+    public sportMode: PlayerState = PlayerState.walk;      //角色运动的模式，如果滑动摇杆是跑还是走，坐
 
     public headersprite: SpriteFrame
+
+    public onChairNode: Chair = null;      //用户坐的椅子
 
     public constructor(openid: string) {
 
@@ -110,10 +113,11 @@ export class GameConfig {
 /**
  * 玩家的动作
  */
-export enum PlayerState{
+export enum PlayerState {
 
     idle,
     walk,
     run,
-    jumpe
+    sit,
+    jump
 }
