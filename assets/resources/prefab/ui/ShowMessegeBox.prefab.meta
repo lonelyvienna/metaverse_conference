@@ -2,12 +2,12 @@
   "ver": "1.1.43",
   "importer": "prefab",
   "imported": true,
-  "uuid": "ae84c123-35bf-42ff-bc33-7f42023ea0f7",
+  "uuid": "e17229c1-8186-47de-9116-1771c298dffd",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "Player"
+    "syncNodeName": "ShowMessegeBox"
   }
 }
